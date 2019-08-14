@@ -29,17 +29,20 @@ password: <%= ENV.fetch('DATABASE_PASSWORD') { 'root' } %>
 docker-compose up -d --build
 ```
 
+- コンテナに入る
+```shell
+docker/shell
+```
+
 - DB作成
 ```docker
-docker-compose run web rails db:create
+rails db:create
 ```
 
 - マイグレーション
 ```docker
-docker-compose run web rails db:migrate
+rails db:migrate
 ```
-
-**ここからはコンテナ内で作業**
 
 ## scafold
 - scafold
@@ -57,8 +60,6 @@ rails action_text:install
 ```ruby
 rails db:migrate
 ```
-
-**ここまで**
 
 ## リッチテキスト適応
 
