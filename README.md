@@ -5,6 +5,11 @@
 git clone git@github.com:tanikento/rails6.0.0.rc1_on_docker.git
 ```
 
+- ディレクトリ移動
+```shell
+cd rails6.0.0.rc1_on_docker
+```
+
 - 新規Railsアプリを作成
 ```docker
 docker-compose run web rails new . --force --no-deps --database=postgresql
