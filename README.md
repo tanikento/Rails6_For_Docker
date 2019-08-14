@@ -39,11 +39,12 @@ docker-compose run web rails db:create
 docker-compose run web rails db:migrate
 ```
 
+**ここからはコンテナ内で作業**
 
 ## scafold
 - scafold
 ```ruby
-rails g scafold
+rails g scaffold article title:string
 ```
 
 ## Action Text
@@ -57,6 +58,7 @@ rails action_text:install
 rails db:migrate
 ```
 
+**ここまで**
 
 ## リッチテキスト適応
 
