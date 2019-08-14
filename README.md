@@ -2,7 +2,7 @@
 
 - リポジトリをクローン
 ```git
-git clone git@github.com:tanikento/rails6_on_docker.git
+git clone git@github.com:tanikento/rails6.0.0.rc1_on_docker.git
 ```
 
 - 新規Railsアプリを作成
