@@ -47,7 +47,7 @@ bin/rails db:migrate
 ```
 
 - 確認
-```s
+```
 localhost:3000
 ```
 
@@ -97,10 +97,27 @@ end
         <%= form.label :content %>
         <%= form.rich_text_area :content %>
     </div>
-<% end %>
+<% end %>>
 ```
 
 - 確認
-```s
+```
 localhost:3000/articles
+```
+
+## Docker
+
+- コンテナに入る
+```shell
+docker/shell
+```
+
+- コンテナ止める
+```shell
+docker/stop
+```
+
+- コンテナ再起動
+```shell
+docker/start
 ```
