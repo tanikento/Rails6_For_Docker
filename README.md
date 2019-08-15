@@ -99,3 +99,8 @@ end
     </div>
 <% end %>
 ```
+
+- 確認
+```s
+localhost:3000/articles
+```
