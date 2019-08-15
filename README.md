@@ -17,11 +17,13 @@ docker-compose run web rails new . --force --no-deps --database=postgresql
 
 - database.yml を修正(./config/database.yml)
 ```yml
-pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
-port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
-username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-password: <%= ENV.fetch('DATABASE_PASSWORD') { 'root' } %>
+default: &default
+  # 省略
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
+  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
+  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'root' } %>
 ```
 
 - dockerイメージをビルド & up
@@ -50,12 +52,14 @@ localhost:3000
 ```
 
 ## scafold
+
 - scafold
 ```ruby
 bin/rails g scaffold article title:string
 ```
 
 ## Action Text
+
 - ACtion Textをインストール
 ```ruby
 bin/rails action_text:install
@@ -63,29 +67,35 @@ bin/rails action_text:install
 
 - マイグレーション
 ```ruby
-ruby/rails db:migrate
+bin/rails db:migrate
 ```
 
 ## リッチテキスト適応
 
-- Model
+- Model(./app/models/article.rb)
 ```ruby
 class Article < ApplicationRecord
     has_rich_text :content
 end
 ```
 
-- Controler
+- Controler(./app/controllers/articles_controller.rb)
 ```ruby
-def article_params
-    params.require(:article).permit(:title, :content)
+class ArticlesController < ApplicationController
+    # 省略
+    def article_params
+        params.require(:article).permit(:title, :content)
+    end
 end
 ```
 
-- View
+- View(./app/views/articles/\_form.html.erb)
 ```ruby
-<div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
-</div>
+<%= form_with(model: article, local: true) do |form| %>
+    <!-- 省略 -->
+    <div class="field">
+        <%= form.label :content %>
+        <%= form.rich_text_area :content %>
+    </div>
+<% end %>
 ```
