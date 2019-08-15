@@ -35,30 +35,35 @@ docker/shell
 ```
 
 - DB作成
-```docker
-rails db:create
+```ruby
+bin/rails db:create
 ```
 
 - マイグレーション
-```docker
-rails db:migrate
+```ruby
+bin/rails db:migrate
+```
+
+- 確認
+```s
+localhost:3000
 ```
 
 ## scafold
 - scafold
 ```ruby
-rails g scaffold article title:string
+bin/rails g scaffold article title:string
 ```
 
 ## Action Text
 - ACtion Textをインストール
 ```ruby
-rails action_text:install
+bin/rails action_text:install
 ```
 
 - マイグレーション
 ```ruby
-rails db:migrate
+ruby/rails db:migrate
 ```
 
 ## リッチテキスト適応
